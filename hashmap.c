@@ -64,24 +64,17 @@ HashMap * createMap(long capacity)
 
 void eraseMap(HashMap * map,  char * key) 
 {
-  if (map == NULL) 
-  {
-    return;
-  }
+  if (map == NULL || key == NULL)
+        return;
 
-  if (key == NULL) 
-  {
-    return;
-  }
-  long index = hash(key, map->capacity);
-  
-  Pair* pair = searchMap(map, key);
-  
-  if (pair != NULL) 
-  {
-    pair->key = NULL;
-    map->size--;
-  }
+    long index = hash(key, map->capacity);
+
+    Pair* pair = searchMap(map, key);
+
+    if (pair != NULL) {
+        pair->key = NULL;
+        map->size--;
+    }
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
