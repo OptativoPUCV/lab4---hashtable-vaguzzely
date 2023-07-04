@@ -2,3 +2,17 @@ Fri 14 Apr 2023 03:41:04 AM UTC:
  tests:  0|6
 total_score: 0/70
 077bf9f
+Tue 04 Jul 2023 03:43:07 AM UTC: 
+ hashmap.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘createMap’:
+hashmap.c:56:12: error: unused variable ‘map’ [-Werror=unused-variable]
+   56 |   HashMap* map = malloc(sizeof(HashMap));
+      |            ^~~
+hashmap.c:58:1: error: control reaches end of non-void function [-Werror=return-type]
+   58 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+f491cc3
