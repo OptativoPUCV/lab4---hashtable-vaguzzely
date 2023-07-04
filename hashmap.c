@@ -133,33 +133,26 @@ void eraseMap(HashMap * map,  char * key)
 }
 
 
-Pair * firstMap(HashMap * map) 
-{
-  map->current = 0;
-  while (map->current < map->capacity) 
-  {
-    if (map->buckets[map->current] != NULL && map->buckets[map->current]->key != NULL) 
-    {
-      Pair* result = map->buckets[map->current];
-      map->current++;
-      return result;
+Pair* firstMap(HashMap* map) {
+    map->current = -1;
+
+    while (map->current < map->capacity - 1) {
+        map->current++;
+        if (map->buckets[map->current] != NULL && map->buckets[map->current]->key != NULL) {
+            return map->buckets[map->current];
+        }
     }
-    map->current++;
-    }
-  map->current = -1; 
-  return 0;
+
+    return NULL;
 }
 
-Pair * nextMap(HashMap * map) 
-{
-  while (map->current < map->capacity) 
-  {
-    if (map->buckets[map->current] != NULL && map->buckets[map->current]->key != NULL)
-    {
-      map->current++;
-      return map->buckets[(map->current)-1];
+Pair* nextMap(HashMap* map) {
+    while (map->current < map->capacity - 1) {
+        map->current++;
+        if (map->buckets[map->current] != NULL && map->buckets[map->current]->key != NULL) {
+            return map->buckets[map->current];
+        }
     }
-    map->current++;
-    }
-  return NULL;
+
+    return NULL;
 }
