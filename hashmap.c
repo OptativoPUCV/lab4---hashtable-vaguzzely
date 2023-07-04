@@ -73,7 +73,7 @@ void eraseMap(HashMap * map,  char * key)
   {
     return;
   }
-  unsigned int index = hash(key, map->capacity);
+  long index = hash(key, map->capacity);
   
   Pair* pair = searchMap(map, key);
   

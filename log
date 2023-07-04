@@ -55,3 +55,14 @@ hashmap.c:76:16: error: unused variable ‘index’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 50a2b72
+Tue 04 Jul 2023 03:48:49 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘eraseMap’:
+hashmap.c:76:8: error: unused variable ‘index’ [-Werror=unused-variable]
+   76 |   long index = hash(key, map->capacity);
+      |        ^~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+54df28e
