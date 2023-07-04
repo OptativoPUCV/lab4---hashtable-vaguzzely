@@ -39,7 +39,46 @@ int is_equal(void* key1, void* key2){
 }
 
 
-void insertMap(HashMap * map, char * key, void * value) {
+void insertMap(HashMap * map, char * key, void * value) 
+{
+   if (map == NULL || key == NULL)
+        return;
+
+    if (map->size >= map->capacity)
+        enlarge(map);
+
+    long index = hash(key, map->capacity);
+
+    while (map->buckets[index] != NULL && strcmp(map->buckets[index]->key, key) != 0) {
+        index = (index + 1) % map->capacity;
+    }
+
+    if (map->buckets[index] == NULL) {
+        Pair* pair = malloc(sizeof(Pair));
+        pair->key = key;
+        pair->value = value;
+        map->buckets[index] = pair;
+        map->size++;
+    }
+
+    map->current = index;
+}
+
+Pair* searchMap(HashMap* map, char* key) {
+    if (map == NULL || key == NULL)
+        return NULL;
+
+    long index = hash(key, map->capacity);
+
+    while (map->buckets[index] != NULL) {
+        if (strcmp(map->buckets[index]->key, key) == 0) {
+            map->current = index;
+            return map->buckets[index];
+        }
+        index = (index + 1) % map->capacity;
+    }
+
+    return NULL;
 
 
 }
