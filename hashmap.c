@@ -38,32 +38,31 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
+void insertMap(HashMap* map, char* key, void* value) {
+    long hash_code = hash(key, map->capacity);
+    int iteration_count = 0;
 
-void insertMap(HashMap * map, char * key, void * value) 
-{
-  long codigo = hash(key, map->capacity);
-    int count = 0;
-
-    if (map->size > (map->capacity * 0.7))
-    {
-      enlarge(map); //se agranda la capacidad del mapa si es que está llena hasta el 70%
+    if (map->size > (map->capacity * 0.7)) {
+        enlarge(map);
     }
-    while (map->buckets[codigo] != NULL && count < map->capacity) {
-      
-        if (is_equalHash(map->buckets[codigo]->key, key)) {
+
+    while (map->buckets[hash_code] != NULL && iteration_count < map->capacity) {
+        if (is_equal(map->buckets[hash_code]->key, key)) {
             return;
         }
-        codigo = (codigo + 1) % map->capacity; 
-        count++;
+        hash_code = (hash_code + 1) % map->capacity;
+        iteration_count++;
     }
-    if (count == map->capacity) {
+
+    if (iteration_count == map->capacity) {
         return;
     }
 
-    map->buckets[codigo] = createhashPair(key, value);
-    map->current = codigo; 
-    map->size++; 
+    map->buckets[hash_code] = createhashPair(key, value);
+    map->current = hash_code;
+    map->size++;
 }
+
 
 Pair* searchMap(HashMap* map, char* key) {
     if (map == NULL || key == NULL)

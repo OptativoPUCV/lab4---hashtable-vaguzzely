@@ -125,3 +125,29 @@ hashmap.c:68:7: note: previous definition of ‘searchMap’ with type ‘Pair *
 cc1: all warnings being treated as errors
 Compilation failed
 160f8d6
+Tue 04 Jul 2023 03:57:37 AM UTC: 
+ hashmap.c | 28 +++++++++++++---------------
+ 1 file changed, 13 insertions(+), 15 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:61:31: error: implicit declaration of function ‘createhashPair’; did you mean ‘createPair’? [-Werror=implicit-function-declaration]
+   61 |     map->buckets[hash_code] = createhashPair(key, value);
+      |                               ^~~~~~~~~~~~~~
+      |                               createPair
+hashmap.c:61:29: error: assignment to ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   61 |     map->buckets[hash_code] = createhashPair(key, value);
+      |                             ^
+hashmap.c: In function ‘eraseMap’:
+hashmap.c:109:10: error: unused variable ‘index’ [-Werror=unused-variable]
+  109 |     long index = hash(key, map->capacity);
+      |          ^~~~~
+hashmap.c: At top level:
+hashmap.c:119:8: error: redefinition of ‘searchMap’
+  119 | Pair * searchMap(HashMap * map,  char * key) {
+      |        ^~~~~~~~~
+hashmap.c:67:7: note: previous definition of ‘searchMap’ with type ‘Pair *(HashMap *, char *)’ {aka ‘Pair *(struct HashMap *, char *)’}
+   67 | Pair* searchMap(HashMap* map, char* key) {
+      |       ^~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+399bbb1
