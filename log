@@ -276,3 +276,9 @@ Tue 04 Jul 2023 04:15:32 AM UTC:
  tests:  17|0
 total_score: 70/70
 e2bac21
+Tue 04 Jul 2023 04:16:35 AM UTC: 
+ hashmap.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+ tests:  17|0
+total_score: 70/70
+9889b5b
