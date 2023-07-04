@@ -136,6 +136,16 @@ void eraseMap(HashMap * map,  char * key)
 Pair * firstMap(HashMap * map) 
 {
   map->current = 0;
+  while (map->current < map->capacity) 
+  {
+    if (map->buckets[map->current] != NULL && map->buckets[map->current]->key != NULL) 
+    {
+      Pair* result = map->buckets[map->current];
+      map->current++;
+      return result;
+    }
+    map->current++;
+    }
   
   return NULL;
 }
