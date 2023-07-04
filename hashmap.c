@@ -144,7 +144,10 @@ Pair * firstMap(HashMap * map)
       map->current++;
       return result;
     }
+    map->current++;
     }
+  map->current = -1; 
+  return 0;
 }
 
 Pair * nextMap(HashMap * map) 
