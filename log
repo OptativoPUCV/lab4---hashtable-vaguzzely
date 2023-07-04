@@ -169,3 +169,21 @@ hashmap.c:67:7: note: previous definition of ‘searchMap’ with type ‘Pair *
 cc1: all warnings being treated as errors
 Compilation failed
 d57e692
+Tue 04 Jul 2023 04:01:41 AM UTC: 
+ hashmap.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘eraseMap’:
+hashmap.c:126:10: error: unused variable ‘index’ [-Werror=unused-variable]
+  126 |     long index = hash(key, map->capacity);
+      |          ^~~~~
+hashmap.c: At top level:
+hashmap.c:136:8: error: redefinition of ‘searchMap’
+  136 | Pair * searchMap(HashMap * map,  char * key) {
+      |        ^~~~~~~~~
+hashmap.c:67:7: note: previous definition of ‘searchMap’ with type ‘Pair *(HashMap *, char *)’ {aka ‘Pair *(struct HashMap *, char *)’}
+   67 | Pair* searchMap(HashMap* map, char* key) {
+      |       ^~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+29e2ca8

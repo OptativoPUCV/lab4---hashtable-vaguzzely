@@ -85,6 +85,23 @@ Pair* searchMap(HashMap* map, char* key) {
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
+    Pair ** anteriorBuckets = map->buckets; 
+    int anteriorCapac = map->capacity; 
+
+    map->capacity *= 2;
+    map->buckets = (Pair **) calloc(map->capacity, sizeof(Pair *));
+
+    
+    map->size = 0;
+
+    
+    for (int i = 0; i < anteriorCapac; i++) {
+        if (anteriorBuckets[i] != NULL && anteriorBuckets[i]->key != NULL) {
+            insertMap(map, anteriorBuckets[i]->key, anteriorBuckets[i]->value);
+        }
+    }
+
+    free(anteriorBuckets);
 
 
 }
