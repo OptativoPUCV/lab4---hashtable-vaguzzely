@@ -123,7 +123,6 @@ void eraseMap(HashMap * map,  char * key)
   if (map == NULL || key == NULL)
         return;
 
-    long index = hash(key, map->capacity);
 
     Pair* pair = searchMap(map, key);
 

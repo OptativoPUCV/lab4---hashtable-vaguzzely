@@ -205,3 +205,15 @@ hashmap.c:67:7: note: previous definition of ‘searchMap’ with type ‘Pair *
 cc1: all warnings being treated as errors
 Compilation failed
 b82b416
+Tue 04 Jul 2023 04:04:07 AM UTC: 
+ hashmap.c | 1 -
+ 1 file changed, 1 deletion(-)
+In file included from test.c:4:
+hashmap.c:135:8: error: redefinition of ‘searchMap’
+  135 | Pair * searchMap(HashMap * map,  char * key) {
+      |        ^~~~~~~~~
+hashmap.c:67:7: note: previous definition of ‘searchMap’ with type ‘Pair *(HashMap *, char *)’ {aka ‘Pair *(struct HashMap *, char *)’}
+   67 | Pair* searchMap(HashMap* map, char* key) {
+      |       ^~~~~~~~~
+Compilation failed
+7844ab3
